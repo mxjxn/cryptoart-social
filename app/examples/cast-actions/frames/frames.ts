@@ -4,14 +4,15 @@ import {
   farcasterHubContext,
   warpcastComposerActionState,
 } from "frames.js/middleware";
-import { DEFAULT_DEBUGGER_HUB_URL } from "../../../debug";
+
+const hubUrl = process.env.NEYNAR_RPC;
 
 export const frames = createFrames({
   baseUrl: `${appURL()}/examples/cast-actions/frames`,
   debug: process.env.NODE_ENV === "development",
   middleware: [
     farcasterHubContext({
-      hubHttpUrl: DEFAULT_DEBUGGER_HUB_URL,
+      hubHttpUrl: hubUrl,
     }),
     warpcastComposerActionState(),
   ],

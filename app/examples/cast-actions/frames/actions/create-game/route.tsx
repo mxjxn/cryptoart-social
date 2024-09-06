@@ -17,6 +17,7 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = frames(async (ctx) => {
   const walletAddress = await ctx.walletAddress();
+console.log({walletAddress})
 
   const createGameUrl = new URL("/examples/cast-actions/create-game", appURL());
 
