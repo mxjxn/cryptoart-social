@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useState } from "react";
-import sdk, { type FrameContext } from "@farcaster/frame-sdk";
+import sdk from "@farcaster/frame-sdk";
+import { Context } from "@farcaster/frame-core";
 import {
   useAccount,
   useSendTransaction,
@@ -13,6 +14,8 @@ import {
 import { config } from "~/components/providers/WagmiProvider";
 import { Button } from "~/components/ui/Button";
 import { truncateAddress } from "~/lib/truncateAddress";
+
+type FrameContext = Context.FrameContext;
 
 export default function Demo(
   { title }: { title?: string } = { title: "Frames v2 Demo" }
