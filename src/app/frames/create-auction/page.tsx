@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import CreateAuctionApp from "./app";
 
-const appUrl = process.env.NEXT_PUBLIC_URL;
+const appUrl = process.env.VERCEL_URL || process.env.NEXT_PUBLIC_URL;
 
 interface Props {
   params: Promise<{
