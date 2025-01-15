@@ -19,24 +19,16 @@ export function frameConnector() {
       try {
         const provider = await this.getProvider();
         console.log("provider", provider);
-
-        try {
-          const accounts = await sdk.wallet.ethProvider.request({
-            method: "eth_requestAccounts",
-          });
-          console.log("accounts", accounts);
-
-          if (!accounts || accounts.length === 0) {
-            throw new Error("No accounts retrieved");
-          }
-        } catch (requestError) {
-          console.error("Error requesting accounts:", requestError);
-          throw new Error("Account request not implemented or failed");
+        const accounts = await provider.request({
+          method: "eth_requestAccounts",
+        });
+        console.log("accounts", accounts);
+        if (!accounts || accounts.length === 0) {
+          throw new Error("No accounts retrieved");
         }
 
         let currentChainId = await this.getChainId();
         console.log("currentChainId", currentChainId);
-
         if (chainId && currentChainId !== chainId) {
           const chain = await this.switchChain!({ chainId });
           currentChainId = chain.id;
