@@ -194,11 +194,13 @@ export default function Demo(
 
         <div className="mb-4">
           <Button
-            onClick={() =>
-              isConnected
+            onClick={() => {
+              console.log("isConnected", isConnected);
+              console.log("config.connectors[0]", config.connectors[0]);
+              return isConnected
                 ? disconnect()
-                : connect({ connector: config.connectors[0] })
-            }
+                : connect({ connector: config.connectors[0] });
+            }}
           >
             {isConnected ? "Disconnect" : "Connect"}
           </Button>

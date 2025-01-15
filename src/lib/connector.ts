@@ -16,23 +16,42 @@ export function frameConnector() {
       this.connect({ chainId: config.chains[0].id });
     },
     async connect({ chainId } = {}) {
-      const provider = await this.getProvider();
-      const accounts = await provider.request({
-        method: "eth_requestAccounts",
-      });
+      try {
+        const provider = await this.getProvider();
+        console.log("provider", provider);
 
-      let currentChainId = await this.getChainId();
-      if (chainId && currentChainId !== chainId) {
-        const chain = await this.switchChain!({ chainId });
-        currentChainId = chain.id;
+        try {
+          const accounts = await sdk.wallet.ethProvider.request({
+            method: "eth_requestAccounts",
+          });
+          console.log("accounts", accounts);
+
+          if (!accounts || accounts.length === 0) {
+            throw new Error("No accounts retrieved");
+          }
+        } catch (requestError) {
+          console.error("Error requesting accounts:", requestError);
+          throw new Error("Account request not implemented or failed");
+        }
+
+        let currentChainId = await this.getChainId();
+        console.log("currentChainId", currentChainId);
+
+        if (chainId && currentChainId !== chainId) {
+          const chain = await this.switchChain!({ chainId });
+          currentChainId = chain.id;
+        }
+
+        connected = true;
+
+        return {
+          accounts: accounts.map((x) => getAddress(x)),
+          chainId: currentChainId,
+        };
+      } catch (error) {
+        console.error("Error in connect function:", error);
+        throw error;
       }
-
-      connected = true;
-
-      return {
-        accounts: accounts.map((x) => getAddress(x)),
-        chainId: currentChainId,
-      };
     },
     async disconnect() {
       connected = false;
