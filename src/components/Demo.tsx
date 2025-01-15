@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useState } from "react";
 import sdk from "@farcaster/frame-sdk";
-import { Context } from "@farcaster/frame-core";
+import { Context } from "@farcaster/frame-sdk";
 import {
   useAccount,
   useSendTransaction,
