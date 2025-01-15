@@ -2,7 +2,7 @@
 
 import { useEffect, useCallback, useState } from "react";
 import sdk from "@farcaster/frame-sdk";
-import { type FrameContext } from "@farcaster/frame-core";
+import  Context from "@farcaster/frame-core";
 import { useAccount, useSendTransaction, useDisconnect, useConnect } from "wagmi";
 import { config } from "~/components/providers/WagmiProvider";
 import { Button } from "~/components/ui/Button";
@@ -10,7 +10,7 @@ import { truncateAddress } from "~/lib/truncateAddress";
 import { CreateAuctionProps } from "~/types";
 
 export default function CreateAuction({ chainId, contractAddress, tokenId }: CreateAuctionProps) {
-  const [context, setContext] = useState<FrameContext>();
+  const [context, setContext] = useState<Context.FrameContext>();
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   useEffect(() => {
     const load = async () => {
