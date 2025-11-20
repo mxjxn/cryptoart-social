@@ -1,6 +1,5 @@
 import { useEffect, useCallback, useState } from "react";
 import sdk from "@farcaster/frame-sdk";
-import { Context } from "@farcaster/frame-sdk";
 import {
   useAccount,
   useSendTransaction,
@@ -15,13 +14,11 @@ import { config } from "~/components/providers/WagmiProvider";
 import { Button } from "~/components/ui/Button";
 import { truncateAddress } from "~/lib/truncateAddress";
 
-type FrameContext = Context.FrameContext;
-
 export default function Demo(
   { title }: { title?: string } = { title: "Frames v2 Demo" }
 ) {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
-  const [context, setContext] = useState<FrameContext>();
+  const [context, setContext] = useState<Awaited<typeof sdk.context>>();
   const [isContextOpen, setIsContextOpen] = useState(false);
   const [txHash, setTxHash] = useState<string | null>(null);
 
@@ -200,9 +197,11 @@ export default function Demo(
             onClick={() => {
               console.log("isConnected", isConnected);
               console.log("config.connectors[0]", config.connectors[0]);
-              return isConnected
-                ? disconnect()
-                : connect({ connector: config.connectors[0] });
+              if (isConnected) {
+                disconnect();
+              } else {
+                connect({ connector: config.connectors[0] as any });
+              }
             }}
           >
             {isConnected ? "Disconnect" : "Connect"}

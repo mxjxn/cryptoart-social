@@ -7,12 +7,9 @@ import { config } from "~/components/providers/WagmiProvider";
 import { Button } from "~/components/ui/Button";
 import { truncateAddress } from "~/lib/truncateAddress";
 import { CreateAuctionProps } from "~/types";
-import { Context } from "@farcaster/frame-core";
-
-type FrameContext = Context.FrameContext;
 
 export default function CreateAuction({ chainId, contractAddress, tokenId }: CreateAuctionProps) {
-  const [context, setContext] = useState<FrameContext>();
+  const [context, setContext] = useState<Awaited<typeof sdk.context>>();
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   useEffect(() => {
     const load = async () => {

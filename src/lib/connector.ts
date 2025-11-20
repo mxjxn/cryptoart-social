@@ -39,7 +39,7 @@ export function frameConnector() {
         return {
           accounts: accounts.map((x) => getAddress(x)),
           chainId: currentChainId,
-        };
+        } as any;
       } catch (error) {
         console.error("Error in connect function:", error);
         throw error;
@@ -54,7 +54,7 @@ export function frameConnector() {
       const accounts = await provider.request({
         method: "eth_requestAccounts",
       });
-      return accounts.map((x) => getAddress(x));
+      return accounts.map((x) => getAddress(x)) as readonly `0x${string}`[];
     },
     async getChainId() {
       const provider = await this.getProvider();
@@ -84,7 +84,7 @@ export function frameConnector() {
       if (accounts.length === 0) this.onDisconnect();
       else
         config.emitter.emit("change", {
-          accounts: accounts.map((x) => getAddress(x)),
+          accounts: accounts.map((x) => getAddress(x)) as readonly `0x${string}`[],
         });
     },
     onChainChanged(chain) {

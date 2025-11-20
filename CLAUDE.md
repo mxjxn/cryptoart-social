@@ -28,27 +28,27 @@ This document provides AI assistants with comprehensive information about the co
 ## Technology Stack
 
 ### Core Framework
-- **Next.js 15.0.3** (App Router) - React metaframework
-- **React 19.0.0-rc** - UI library (RC version)
-- **TypeScript 5** - Type safety
+- **Next.js 16.0.3** (App Router) - React metaframework
+- **React 19.2.0** - UI library (stable release)
+- **TypeScript 5.9.3** - Type safety
 
 ### Web3 & Blockchain
-- **@farcaster/frame-sdk** (0.0.26) - Farcaster Frames v2 SDK
-- **@farcaster/frame-core** (0.0.24) - Frame context and types
-- **wagmi** (2.14.7) - React hooks for Ethereum
-- **viem** (2.x) - Type-safe Ethereum library
+- **@farcaster/frame-sdk** (0.1.12) - Farcaster Frames v2 SDK
+- **@farcaster/frame-core** (0.3.11) - Frame context and types
+- **wagmi** (3.0.1) - React hooks for Ethereum
+- **viem** (2.39.3) - Type-safe Ethereum library
 - **Base Chain** - Primary blockchain network
 
 ### State Management
-- **@tanstack/react-query** (5.61.0) - Server state management and caching
+- **@tanstack/react-query** (5.90.10) - Server state management and caching
 
 ### Styling
-- **Tailwind CSS** (3.4.1) - Utility-first CSS
-- **PostCSS** (8.x) - CSS transformation
+- **Tailwind CSS** (3.4.18) - Utility-first CSS
+- **PostCSS** (8.4.49) - CSS transformation
 
 ### Tools
 - **pnpm** - Package manager (preferred)
-- **ESLint** (8.x) - Code linting
+- **ESLint** (9.39.1) - Code linting
 
 ---
 
@@ -742,5 +742,20 @@ const nextConfig = {
 ---
 
 **Last Updated:** 2025-11-20
-**Version:** 1.0.0
+**Version:** 2.0.0
 **Maintained by:** AI Assistant (Claude)
+
+## Changelog
+
+### v2.0.0 (2025-11-20)
+- Updated all dependencies to latest versions
+- **Breaking Changes:**
+  - Upgraded React from 19.0.0-rc to stable 19.2.0
+  - Upgraded Next.js from 15.0.3 to 16.0.3
+  - Upgraded wagmi from 2.14.7 to 3.0.1 (major version with API changes)
+  - Upgraded Farcaster SDK packages (frame-sdk 0.0.26 → 0.1.12, frame-core 0.0.24 → 0.3.11)
+  - Upgraded ESLint from 8.x to 9.39.1
+  - Kept Tailwind CSS at 3.4.18 (v4 requires migration to @tailwindcss/postcss)
+- Fixed type compatibility issues with new Farcaster SDK API
+- Updated custom Wagmi connector for v3 API compatibility
+- Updated TypeScript to 5.9.3
