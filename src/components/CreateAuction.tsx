@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useCallback, useState } from "react";
-import sdk from "@farcaster/frame-sdk";
+import sdk from "@farcaster/miniapp-sdk";
 import { useAccount, useSendTransaction, useDisconnect, useConnect } from "wagmi";
 import { config } from "~/components/providers/WagmiProvider";
 import { Button } from "~/components/ui/Button";

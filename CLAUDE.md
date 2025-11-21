@@ -17,11 +17,11 @@ This document provides AI assistants with comprehensive information about the co
 
 ## Project Overview
 
-**cryptoart-social** is a Farcaster Frames v2 demonstration application built on top of the frames-v2-demo example repository. It showcases wallet integration, transaction signing, and cryptographic operations within Farcaster frames.
+**cryptoart-social** is a Farcaster Mini App demonstration application built on top of the frames-v2-demo example repository. It showcases wallet integration, transaction signing, and cryptographic operations within Farcaster mini apps (formerly known as Frames v2).
 
 **Primary Purpose:** Demonstrate multi-frame interfaces with seamless Web3 wallet integration for Farcaster applications.
 
-**Tech Category:** Next.js + TypeScript + React + Farcaster Frames + Web3
+**Tech Category:** Next.js + TypeScript + React + Farcaster Mini Apps + Web3
 
 ---
 
@@ -33,8 +33,7 @@ This document provides AI assistants with comprehensive information about the co
 - **TypeScript 5.9.3** - Type safety
 
 ### Web3 & Blockchain
-- **@farcaster/frame-sdk** (0.1.12) - Farcaster Frames v2 SDK
-- **@farcaster/frame-core** (0.3.11) - Frame context and types
+- **@farcaster/miniapp-sdk** (0.2.1) - Farcaster Mini App SDK (formerly Frames v2)
 - **wagmi** (3.0.1) - React hooks for Ethereum
 - **viem** (2.39.3) - Type-safe Ethereum library
 - **Base Chain** - Primary blockchain network
@@ -177,9 +176,9 @@ To test frames in the Warpcast playground:
 
 ## Architecture Patterns
 
-### 1. Frames v2 Architecture
+### 1. Farcaster Mini App Architecture
 
-Each frame is a separate Next.js route with its own:
+Each mini app frame is a separate Next.js route with its own:
 - Metadata configuration
 - OG image generation
 - Frame-specific UI components
@@ -366,14 +365,14 @@ const value = parseEther('0.1'); // Convert to wei
 const readable = formatEther(value); // Convert back
 ```
 
-### Frame SDK Integration
+### Farcaster Mini App SDK Integration
 
 **Context Access:**
 ```typescript
-import sdk from '@farcaster/frame-sdk';
+import sdk from '@farcaster/miniapp-sdk';
 import { useEffect, useState } from 'react';
 
-function FrameComponent() {
+function MiniAppComponent() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
 
   useEffect(() => {
@@ -734,7 +733,7 @@ const nextConfig = {
 ## Additional Resources
 
 - [Next.js Documentation](https://nextjs.org/docs)
-- [Farcaster Frames v2 Docs](https://docs.farcaster.xyz/developers/frames/v2)
+- [Farcaster Mini Apps Docs](https://docs.farcaster.xyz/developers/frames/v2) (formerly Frames v2)
 - [Wagmi Documentation](https://wagmi.sh/)
 - [Viem Documentation](https://viem.sh/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
@@ -742,10 +741,18 @@ const nextConfig = {
 ---
 
 **Last Updated:** 2025-11-20
-**Version:** 2.0.0
+**Version:** 2.1.0
 **Maintained by:** AI Assistant (Claude)
 
 ## Changelog
+
+### v2.1.0 (2025-11-20)
+- **Migrated to Farcaster Mini App SDK**
+  - Replaced `@farcaster/frame-sdk` and `@farcaster/frame-core` with `@farcaster/miniapp-sdk` (0.2.1)
+  - Updated all imports to use `@farcaster/miniapp-sdk`
+  - Updated terminology throughout documentation (Frames v2 → Mini Apps)
+  - This aligns with Farcaster's official SDK naming convention
+- Build verified ✅
 
 ### v2.0.0 (2025-11-20)
 - Updated all dependencies to latest versions
